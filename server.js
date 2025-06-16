@@ -73,12 +73,19 @@ const app = express();
 app.use(express.json({ limit: '10kb' }));
 
 // Enable CORS with specific configuration
+// app.use(cors({
+//   origin: 'http://localhost:3000',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://typehubglobal.in'], // 👈 Add your live frontend domain here
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+
 
 // Mount routers
 app.use('/api/v1/auth', authRoutes);
