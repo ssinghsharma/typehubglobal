@@ -99,3 +99,10 @@ process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`);
   server.close(() => process.exit(1));
 });
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Backend is working!" });
+});
